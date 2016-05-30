@@ -5,10 +5,83 @@
         <description>浩宇的博客 - Henry Rax</description>
         <link>http://leihaoyu.github.io</link>
         <atom:link href="http://leihaoyu.github.io/rss.xml" rel="self" type="application/rss+xml" />
-        <lastBuildDate>Fri, 27 May 2016 16:03:51 +0800</lastBuildDate>
-        <pubDate>Fri, 27 May 2016 16:03:51 +0800</pubDate>
+        <lastBuildDate>Mon, 30 May 2016 11:13:38 +0800</lastBuildDate>
+        <pubDate>Mon, 30 May 2016 11:13:38 +0800</pubDate>
         <ttl>60</ttl>
 
+
+        <item>
+                <title>一些官方视频观后小结</title>
+                <description>
+&lt;h2 id=&quot;appledeveloperwwdc2015&quot;&gt;简单总结一下看了AppleDeveloper网站上wwdc2015的视频学到的&lt;/h2&gt;
+
+&lt;p&gt;因为项目弄完了，老板觉得看视频就是在玩，所以只看了少部分，先说看了的几个这几个吧&lt;/p&gt;
+
+&lt;h3 id=&quot;protocol-oriented-programming-in-swiftswift&quot;&gt;1.Protocol Oriented Programming In Swift（用swift面向协议编程）&lt;/h3&gt;
+
+&lt;p&gt;视频链接&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2015/408/&quot;&gt;点击此处&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;这个视频总的来说讲了用POP比用传统的OOP的优势。以及带来的新特性和展望可以用在哪些方面。
+一开始作者讲了传统OOP在资源共享方面带来的缺陷：
+1.为了不出现可变版本相互影响，往往不得已把资源进行Copy操作。
+2.Copy后会降低允许相率。
+3.会出现资源的相互竞争。
+4.防止互相竞争就加锁。
+5.加锁后就更加效率低。
+6.还会可能造成死锁。
+7.越来越复杂。
+8.Bug一堆。&lt;/p&gt;
+
+&lt;p&gt;然后作者就引申出用Protocol和Value可以代替class进行愉快的编程。并说swift有很多东西都是用的Protocol。&lt;/p&gt;
+
+&lt;p&gt;然后又用Protocol进行Extension，又可以玩出花来，作者说就像magic一样。
+至于为什么是magic。大概是说一个对象本来只有一个名称唯一的方法，但是通过协议。遵循协议过后，通过扩展协议，可以扩展出相同名称的不同实作。&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;pre&gt;&lt;code&gt;protocol Doc {
+
+}
+extension Doc {
+    func sayHello() {
+        print(&quot;Doc Say&quot;)
+    }
+}
+
+class Father {
+    func sayHello() {
+        print(&quot;father Say&quot;)
+    }
+}
+
+class Son: Father, Doc {
+    override func sayHello() {
+        print(&quot;son say&quot;)
+    }
+}
+
+let man = Son()
+man.sayHello()//&quot;son say&quot;
+
+let nman = man as Father
+nman.sayhello()//&quot;son say&quot;
+
+let fman = man as Doc
+fman.sayHello()//&quot;Doc Say&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;building-better-apps-with-value-types-in-swift&quot;&gt;2.Building Better Apps with Value Types in Swift&lt;/h3&gt;
+
+&lt;p&gt;视频链接&lt;a href=&quot;https://developer.apple.com/videos/play/wwdc2015/414/&quot;&gt;点击此处&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;一开始，作者也是说了用Reference带来的复杂。还是举例说资源共享时候mutable版本带来的复杂。
+然后就说了用Value是多么的安全，多么的方便。
+然后又说了要怎么应用ValueTpye。作者就说了其实swift里面的基本数据类型都是ValueType，比如String，CGFloat之类的连集合Array，Set等都是。虽然底层很多是引用类型，但是苹果做了优化，使我们用的时候就按照ValueType用就行了。然后还讲了如何把一个引用类型的对象引入我们的值类型中。
+然后又说了ValueType天生就非常适合于Undo操作，因为每一步操作都是值类型都是独立的，切换非常方便。&lt;/p&gt;
+</description>
+                <link>http://leihaoyu.github.io/2016/05/28/afterwatchvideos</link>
+                <guid>http://leihaoyu.github.io/2016/05/28/afterwatchvideos</guid>
+                <pubDate>Sat, 28 May 2016 00:00:00 +0800</pubDate>
+        </item>
 
         <item>
                 <title>JS资料整理</title>
