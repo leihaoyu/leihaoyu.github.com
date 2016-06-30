@@ -22,6 +22,7 @@ tags: []
 4. 官方在推这一技术，如果你的app不支持，岂不是很low，潮流。
 
 #### 使用3D-touch的要点.
+
 #### Home screen quick action （主屏幕快捷框）
 
 1. 分为静态的选项和动态的选项。
@@ -72,7 +73,7 @@ Preview Action
 * lists ++ and -- operators
 * C-style for loop
 * Implicit tuple splat in calls
-增加了一些特性：
+#### 增加了一些特性：
 * Scoped access level, new fileprivate access level 
 * case labels with multiple variable bindings
 * Generic Type Aliases
@@ -81,7 +82,7 @@ Preview Action
 * Expanding Self to class members and value types 
 * Adding a build configuration “is importable” test 
 * Typealiases in protocols and protocol extensions
-修改了一些特性：
+#### 修改了一些特性：
 * Replace __FILE__ with #file
 * inout moved to be part of the type
 * Requiring leading dot prefixes for enum instance members 
@@ -93,42 +94,42 @@ Preview Action
 
 #### 3.类型检查
 ＊ swift2中的判断！＝nil不再用了
-    let ptr : UnsafeMutablePointer<Int> = nil
+    ｀let ptr : UnsafeMutablePointer<Int> = nil
     if ptr != nil {
     ptr.memory = 42
-    }
+    }｀
 
 ＊ swift3:
-    let ptr : UnsafeMutablePointer<Int>? = nil 
-    ptr?.memory = 42
+    ｀let ptr : UnsafeMutablePointer<Int>? = nil 
+    ptr?.memory = 42｀
 
 关于解绑，swift2中：
-    func f(value : Int!) {
+    ｀func f(value : Int!) {
     let x = value + 1 // x: Int - force unwrapped
     let y = value // y: Int!
     let array = [value, 42] // [Int], [Int!], [Int?], [Any]... Cannot convert value of type ‘[Int!]’ to argument type 
-    use(array) }
+    use(array) }｀
 swift3中：
-    func f(value : Int!) {
+    ｀func f(value : Int!) {
     let x = value + 1 // x: Int - force unwrapped let y = value // y: Int?
     let array = [value, 42]
     let array2 = [value!, 42] // [Int]
-    use(array) }
+    use(array) }｀
 
 #### 4.StandardLib
 swift2:
-    i = collection.startIndex
-    next = i.successor()
+    ｀i = collection.startIndex
+    next = i.successor()｀
 swift3:
-    i = collection.startIndex
-    next = collection.index(after: i)
+    ｀i = collection.startIndex
+    next = collection.index(after: i)｀
 
 swift2:
-    let v = 2 * Float(M_PI)
-    return x * CGFloat(M_PI) / 180
+    ｀let v = 2 * Float(M_PI)
+    return x * CGFloat(M_PI) / 180｀
 swift3:
-    let v = 2 * Float.pi
-    return x * .pi / 180
+    ｀let v = 2 * Float.pi
+    return x * .pi / 180｀
 
 其他加入的特性：
 ＊ Add a Lazy flatMap for sequences of optionals
@@ -142,6 +143,7 @@ swift3:
 
 #### 5.SwiftTools
 在以下几方便都有提升
+
 ＊ Faster Type Checking
 ＊ Faster Startup Time
 ＊ Smaller Binaries
