@@ -15,33 +15,35 @@ tags: []
 
 视频链接[点击此处](https://developer.apple.com/videos/play/wwdc2016/228/)
 
-##### 我们为什么要使用3D-touch.
+#### 我们为什么要使用3D-touch.
 1. homescreen的3Dtouch可以快速进入app里面相应的功能，方便。
 2. 里面的peek&pop，可以快速的对内容进行预览和操作，快速。
 3. 新的UIPreviewInteraction让我们用，API支持。
 4. 官方在推这一技术，如果你的app不支持，岂不是很low，潮流。
 
-##### 使用3D-touch的要点.
-###### Home screen quick action （主屏幕快捷框）
+#### 使用3D-touch的要点.
+#### Home screen quick action （主屏幕快捷框）
+
 1. 分为静态的选项和动态的选项。
 * 静态的选项在Info.plist中添加一个 UIApplicationShortcutItems 的 Array 即可。
 * 动态的选项添加到 AppDelegate 中的 shortcutItems 属性即可。
 
 2. 处理点击事件：
+
 如果app在后台调用：
-    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
-    // 做你想做的事
-    // 最后不要忘了调用completionHandler()
-    }
+        func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        // 做你想做的事
+        // 最后不要忘了调用completionHandler()
+        }
 如果app还没加载调用：
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // 通过 UIApplicationLaunchOptionsShortcutItemKey 在 launchOptions 中取得 UIApplicationShortcutItem
-    // 然后做你想做的事
-    }
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // 通过 UIApplicationLaunchOptionsShortcutItemKey 在 launchOptions 中取得 UIApplicationShortcutItem
+        // 然后做你想做的事
+        }
 
 补充一点就是作者说要注意版本问题，就是处理点击事件的时候可能正好是app升级过后数据可能是上个版本的数据，需要判断一下版本。
 
-###### Peek and Pop （不知道怎么翻译好，概览？）
+#### Peek and Pop （不知道怎么翻译好，概览？）
 添加Peek and Pop要遵循以下几步：
 1. 让需要预览的 ViewController 遵循 UIViewControllerPreviewingDelegate 协议
 2. 调用 registerForPreviewing(with:sourceView:) 注册该ViewController
