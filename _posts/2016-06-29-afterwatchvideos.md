@@ -48,6 +48,7 @@ tags: []
 
 #### Peek and Pop （不知道怎么翻译好，概览？）
 添加Peek and Pop要遵循以下几步：
+
 1. 让需要预览的 ViewController 遵循 UIViewControllerPreviewingDelegate 协议
 2. 调用 registerForPreviewing(with:sourceView:) 注册该ViewController
 3. 在 preview 代理方法中提供一个预览的ViewController，并设置好 context 的 sourceRect.
@@ -75,6 +76,7 @@ Preview Action
 * lists ++ and -- operators
 * C-style for loop
 * Implicit tuple splat in calls
+
 #### 3.增加了一些特性：
 * Scoped access level, new fileprivate access level 
 * case labels with multiple variable bindings
@@ -84,6 +86,7 @@ Preview Action
 * Expanding Self to class members and value types 
 * Adding a build configuration “is importable” test 
 * Typealiases in protocols and protocol extensions
+
 #### 4.修改了一些特性：
 * Replace __FILE__ with #file
 * inout moved to be part of the type
