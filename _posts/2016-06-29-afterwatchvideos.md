@@ -24,15 +24,15 @@ tags: []
 ##### 使用3D-touch的要点.
 ###### Home screen quick action （主屏幕快捷框）
 1.分为静态的选项和动态的选项。
-静态的选项在Info.plist中添加一个 UIApplicationShortcutItems 的 Array 即可。
-动态的选项添加到 AppDelegate 中的 shortcutItems 属性即可。
+*静态的选项在Info.plist中添加一个 UIApplicationShortcutItems 的 Array 即可。
+*动态的选项添加到 AppDelegate 中的 shortcutItems 属性即可。
 
 2.处理点击事件：
 如果app在后台调用：
-	func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
-	// 做你想做的事
-	// 最后不要忘了调用completionHandler()
-	}
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+    // 做你想做的事
+    // 最后不要忘了调用completionHandler()
+    }
 如果app还没加载调用：
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // 通过 UIApplicationLaunchOptionsShortcutItemKey 在 launchOptions 中取得 UIApplicationShortcutItem
@@ -63,40 +63,40 @@ Preview Action
 
 开始坐着介绍了swift开源半年来的事情，还有PackageManager，还有可以在Linux上用。
 然后开始讲语言上的改动，说这些改动主要是通过大家一起的需求改动的。
-###### 1.命名规范的改动。https://swift.org/documentation/api-design-guidelines/
-###### 2.移除了一些特性：
-Currying func declaration 
-syntax var in function parameter 
-lists ++ and -- operators
-C-style for loop
-Implicit tuple splat in calls
+#### 1.命名规范的改动。https://swift.org/documentation/api-design-guidelines/
+#### 2.移除了一些特性：
+*Currying func declaration 
+*syntax var in function parameter 
+*lists ++ and -- operators
+*C-style for loop
+*Implicit tuple splat in calls
 增加了一些特性：
-Scoped access level, new fileprivate access level 
-case labels with multiple variable bindings
-Generic Type Aliases
-Referencing Objective-C key-paths
-Referencing the selector for property getters and setters 
-Expanding Self to class members and value types 
-Adding a build configuration “is importable” test 
-Typealiases in protocols and protocol extensions
+*Scoped access level, new fileprivate access level 
+*case labels with multiple variable bindings
+*Generic Type Aliases
+*Referencing Objective-C key-paths
+*Referencing the selector for property getters and setters 
+*Expanding Self to class members and value types 
+*Adding a build configuration “is importable” test 
+*Typealiases in protocols and protocol extensions
 修改了一些特性：
-Replace __FILE__ with #file
-inout moved to be part of the type
-Requiring leading dot prefixes for enum instance members 
-Attribute syntax: replace = with :
-Move @noescape and @autoclosure to be type attributes 
-Enforcing order of defaulted parameters
-Standardize function type argument syntax to require parentheses 
-Converting dynamicType from a property to an operator
+*Replace __FILE__ with #file
+*inout moved to be part of the type
+*Requiring leading dot prefixes for enum instance members 
+*Attribute syntax: replace = with :
+*Move @noescape and @autoclosure to be type attributes 
+*Enforcing order of defaulted parameters
+*Standardize function type argument syntax to require parentheses 
+*Converting dynamicType from a property to an operator
 
-###### 3.类型检查
-swift2中的判断！＝nil不再用了
+#### 3.类型检查
+＊swift2中的判断！＝nil不再用了
     let ptr : UnsafeMutablePointer<Int> = nil
     if ptr != nil {
     ptr.memory = 42
     }
 
-swift3:
+＊swift3:
     let ptr : UnsafeMutablePointer<Int>? = nil 
     ptr?.memory = 42
 
@@ -113,7 +113,7 @@ swift3中：
     let array2 = [value!, 42] // [Int]
     use(array) }
 
-###### 4.StandardLib
+#### 4.StandardLib
 swift2:
     i = collection.startIndex
     next = i.successor()
@@ -129,25 +129,25 @@ swift3:
     return x * .pi / 180
 
 其他加入的特性：
-Add a Lazy flatMap for sequences of optionals
-Conversions Unsafe[Mutable]Pointer to Int and UInt
-Change Unmanaged to use UnsafePointer
-Add first(where:) method to Sequence
-Add generic result and error handling to autoreleasepool()
-Failable numeric conversion initializers
-Adding a public base property to slices
-Add sequence(first:next:) and sequence(state:next:) to the stdlib
+＊Add a Lazy flatMap for sequences of optionals
+＊Conversions Unsafe[Mutable]Pointer to Int and UInt
+＊Change Unmanaged to use UnsafePointer
+＊Add first(where:) method to Sequence
+＊Add generic result and error handling to autoreleasepool()
+＊Failable numeric conversion initializers
+＊Adding a public base property to slices
+＊Add sequence(first:next:) and sequence(state:next:) to the stdlib
 
-###### 5.SwiftTools
+#### 5.SwiftTools
 在以下几方便都有提升
-Faster Type Checking
-Faster Startup Time
-Smaller Binaries
-Stack Promotion
-Incremental Compilation
-Faster Dictionary
-String Hashing
-Whole Module Optimization
+＊Faster Type Checking
+＊Faster Startup Time
+＊Smaller Binaries
+＊Stack Promotion
+＊Incremental Compilation
+＊Faster Dictionary
+＊String Hashing
+＊Whole Module Optimization
 
 
 
