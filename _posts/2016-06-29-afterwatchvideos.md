@@ -31,15 +31,18 @@ tags: []
 2. 处理点击事件：
 
 如果app在后台调用：
-        ｀func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+
+        func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         // 做你想做的事
         // 最后不要忘了调用completionHandler()
-        }｀
+        }
+
 如果app还没加载调用：
-        ｀func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // 通过 UIApplicationLaunchOptionsShortcutItemKey 在 launchOptions 中取得 UIApplicationShortcutItem
         // 然后做你想做的事
-        }｀
+        }
 
 补充一点就是作者说要注意版本问题，就是处理点击事件的时候可能正好是app升级过后数据可能是上个版本的数据，需要判断一下版本。
 
@@ -72,7 +75,7 @@ Preview Action
 * lists ++ and -- operators
 * C-style for loop
 * Implicit tuple splat in calls
-#### 增加了一些特性：
+#### 3.增加了一些特性：
 * Scoped access level, new fileprivate access level 
 * case labels with multiple variable bindings
 * Generic Type Aliases
@@ -81,7 +84,7 @@ Preview Action
 * Expanding Self to class members and value types 
 * Adding a build configuration “is importable” test 
 * Typealiases in protocols and protocol extensions
-#### 修改了一些特性：
+#### 4.修改了一些特性：
 * Replace __FILE__ with #file
 * inout moved to be part of the type
 * Requiring leading dot prefixes for enum instance members 
@@ -93,44 +96,56 @@ Preview Action
 
 #### 3.类型检查
 ＊ swift2中的判断！＝nil不再用了
-    ｀let ptr : UnsafeMutablePointer<Int> = nil
+
+    let ptr : UnsafeMutablePointer<Int> = nil
     if ptr != nil {
     ptr.memory = 42
-    }｀
+    }
 
 ＊ swift3:
-    ｀let ptr : UnsafeMutablePointer<Int>? = nil 
-    ptr?.memory = 42｀
+
+    let ptr : UnsafeMutablePointer<Int>? = nil 
+    ptr?.memory = 42
 
 关于解绑，swift2中：
-    ｀func f(value : Int!) {
+
+    func f(value : Int!) {
     let x = value + 1 // x: Int - force unwrapped
     let y = value // y: Int!
     let array = [value, 42] // [Int], [Int!], [Int?], [Any]... Cannot convert value of type ‘[Int!]’ to argument type 
-    use(array) }｀
+    use(array) }
+
 swift3中：
-    ｀func f(value : Int!) {
+
+    func f(value : Int!) {
     let x = value + 1 // x: Int - force unwrapped let y = value // y: Int?
     let array = [value, 42]
     let array2 = [value!, 42] // [Int]
-    use(array) }｀
+    use(array) }
 
 #### 4.StandardLib
 swift2:
-    ｀i = collection.startIndex
-    next = i.successor()｀
+
+    i = collection.startIndex
+    next = i.successor()
+
 swift3:
-    ｀i = collection.startIndex
-    next = collection.index(after: i)｀
+
+    i = collection.startIndex
+    next = collection.index(after: i)
 
 swift2:
-    ｀let v = 2 * Float(M_PI)
-    return x * CGFloat(M_PI) / 180｀
+
+    let v = 2 * Float(M_PI)
+    return x * CGFloat(M_PI) / 180
+
 swift3:
-    ｀let v = 2 * Float.pi
-    return x * .pi / 180｀
+
+    let v = 2 * Float.pi
+    return x * .pi / 180
 
 其他加入的特性：
+
 ＊ Add a Lazy flatMap for sequences of optionals
 ＊ Conversions Unsafe[Mutable]Pointer to Int and UInt
 ＊ Change Unmanaged to use UnsafePointer
@@ -141,6 +156,7 @@ swift3:
 ＊ Add sequence(first:next:) and sequence(state:next:) to the stdlib
 
 #### 5.SwiftTools
+
 在以下几方便都有提升
 
 ＊ Faster Type Checking
