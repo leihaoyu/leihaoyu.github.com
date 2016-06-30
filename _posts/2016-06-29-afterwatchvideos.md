@@ -63,12 +63,14 @@ Preview Action
 视频链接[点击此处](https://developer.apple.com/videos/play/wwdc2016/402/)
 
 首先总结一下
+
 1. swift3.0着重于基本层面的改动。
 2. swift.org
 3. 代码可以通过xcode迁徙到3.0
 
 开始坐着介绍了swift开源半年来的事情，还有PackageManager，还有可以在Linux上用。
 然后开始讲语言上的改动，说这些改动主要是通过大家一起的需求改动的。
+
 #### 1.命名规范的改动。https://swift.org/documentation/api-design-guidelines/
 #### 2.移除了一些特性：
 * Currying func declaration 
