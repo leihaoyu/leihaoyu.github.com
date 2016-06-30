@@ -26,21 +26,20 @@ tags: []
 #### Home screen quick action （主屏幕快捷框）
 
 1. 分为静态的选项和动态的选项。
-* 静态的选项在Info.plist中添加一个 UIApplicationShortcutItems 的 Array 即可。
-* 动态的选项添加到 AppDelegate 中的 shortcutItems 属性即可。
-
+1. 静态的选项在Info.plist中添加一个 UIApplicationShortcutItems 的 Array 即可。
+1. 动态的选项添加到 AppDelegate 中的 shortcutItems 属性即可。
 2. 处理点击事件：
 
 如果app在后台调用：
-        func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
+        ｀func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void) {
         // 做你想做的事
         // 最后不要忘了调用completionHandler()
-        }
+        }｀
 如果app还没加载调用：
-        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        ｀func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // 通过 UIApplicationLaunchOptionsShortcutItemKey 在 launchOptions 中取得 UIApplicationShortcutItem
         // 然后做你想做的事
-        }
+        }｀
 
 补充一点就是作者说要注意版本问题，就是处理点击事件的时候可能正好是app升级过后数据可能是上个版本的数据，需要判断一下版本。
 
