@@ -100,14 +100,14 @@ Preview Action
 * Converting dynamicType from a property to an operator
 
 #### 3.类型检查
-＊ swift2中的判断！＝nil不再用了
+swift2中的判断！＝nil不再用了
 
     let ptr : UnsafeMutablePointer<Int> = nil
     if ptr != nil {
     ptr.memory = 42
     }
 
-＊ swift3:
+swift3:
 
     let ptr : UnsafeMutablePointer<Int>? = nil 
     ptr?.memory = 42
