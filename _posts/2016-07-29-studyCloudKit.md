@@ -113,6 +113,7 @@ tags: []
 #### 使用Operation进行操作。
 
 CKModifyRecordsOperation 可以用于新增
+
 CKFetchRecordsOperation 可以用于查找
 
 
@@ -124,7 +125,6 @@ For example, to fetch multiple one-to-one relationships, add all the target reco
         CKFetchRecordsOperation *fetchRecordsOperation = [[CKFetchRecordsOperation alloc] initWithRecordIDs:fetchRecordIDs];
 
 3. Optionally, provide a per record completion handler.
-
 If you want to save the data from successful individual records, provide a per record completion handler. The completion handler should create a model object for a successfully fetched record, and because the operation may fail, should keep the record ID of a failed fetch.
 
         fetchRecordsOperation.perRecordCompletionBlock = ^(CKRecord *record, CKRecordID *recordID, NSError *error) {
@@ -147,7 +147,7 @@ If you want to save the data from successful individual records, provide a per r
             }
         };
 
-If you save the record IDs in the per record completion handler in step 3, you can attempt to fetch failed records again.
+    If you save the record IDs in the per record completion handler in step 3, you can attempt to fetch failed records again.
 
 5. Start the operation.
 
@@ -159,32 +159,32 @@ If you save the record IDs in the per record completion handler in step 3, you c
 
 1. 单个删除
 
-[publicDatabase deleteRecordWithID:recordID completionHandler:^(CKRecordID *recordID, NSError *error) {
+        [publicDatabase deleteRecordWithID:recordID completionHandler:^(CKRecordID *recordID, NSError *error) {
 
-}];
+        }];
 
 2. 批量删除
 
-// we use CKModifyRecordsOperation to delete multiple records
-CKModifyRecordsOperation *operation = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:nil recordIDsToDelete:recordIDs];
-operation.savePolicy = CKRecordSaveIfServerRecordUnchanged;
-operation.queuePriority = NSOperationQueuePriorityHigh;
+        // we use CKModifyRecordsOperation to delete multiple records
+        CKModifyRecordsOperation *operation = [[CKModifyRecordsOperation alloc] initWithRecordsToSave:nil recordIDsToDelete:recordIDs];
+        operation.savePolicy = CKRecordSaveIfServerRecordUnchanged;
+        operation.queuePriority = NSOperationQueuePriorityHigh;
 
-// The following Quality of Service (QoS) is used to indicate to the system the nature and importance of this work.
-// Higher QoS classes receive more resources than lower ones during resource contention.
-//
-operation.qualityOfService = NSQualityOfServiceUserInitiated;
+        // The following Quality of Service (QoS) is used to indicate to the system the nature and importance of this work.
+        // Higher QoS classes receive more resources than lower ones during resource contention.
+        //
+        operation.qualityOfService = NSQualityOfServiceUserInitiated;
 
-// add the completion for the entire delete operation
-operation.modifyRecordsCompletionBlock = ^(NSArray *savedRecords, NSArray *deletedRecordIDs, NSError *error) {
+        // add the completion for the entire delete operation
+        operation.modifyRecordsCompletionBlock = ^(NSArray *savedRecords, NSArray *deletedRecordIDs, NSError *error) {
 
 
 
-// back on the main queue, call our completion handler
+        // back on the main queue, call our completion handler
 
-};
+        };
 
-// start the operation
+        // start the operation
 
 
 ### 5. 还有一个比较重要的功能就是订阅功能，简单的类型如果有新内容，发送一个推送给我，让我实时更新关注的东西。
