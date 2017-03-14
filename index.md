@@ -5,6 +5,10 @@ tagline: iOS
 ---
 {% include JB/setup %}
 
+MyEmail:378975015@qq.com
+MyMobile:(86)18566182258
+
+
 最近我在观看 [WWDC 2015 Videos](https://developer.apple.com/videos/wwdc2015/)
 
 最近我在学习的网页 [objc中国](http://objcio.cn/)
